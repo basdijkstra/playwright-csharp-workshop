@@ -1,4 +1,5 @@
-﻿using Microsoft.Playwright.NUnit;
+﻿using Microsoft.Playwright;
+using Microsoft.Playwright.NUnit;
 
 namespace PlaywrightWorkshop.InstallationCheck
 {
