@@ -292,3 +292,6 @@ build
 
 # SpecFlow auto generated files
 TestProject.OpenSDK.SpecFlowExamples/SpecFlow
+
+# Playwright authentication data
+**/playwright/.auth/**
