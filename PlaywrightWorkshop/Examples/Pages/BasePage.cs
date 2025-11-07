@@ -1,17 +1,17 @@
 ﻿using Microsoft.Playwright;
 
-namespace PlaywrightWorkshop.Answers.Pages.ParaBank
+namespace PlaywrightWorkshop.Examples.Pages
 {
-    public class AccountsOverviewPage
+    public class BasePage
     {
         private readonly IPage page;
 
-        public AccountsOverviewPage(IPage page)
+        protected BasePage(IPage page)
         {
             this.page = page;
         }
 
-        public async Task SelectMenuItem(string menuItem)
+        protected async Task SelectMenuItem(string menuItem)
         {
             await this.page.GetByRole(AriaRole.Link, new() { Name = menuItem }).ClickAsync();
         }

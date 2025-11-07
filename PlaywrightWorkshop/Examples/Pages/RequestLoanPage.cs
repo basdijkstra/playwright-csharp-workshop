@@ -2,7 +2,7 @@
 
 namespace PlaywrightWorkshop.Examples.Pages
 {
-    public class RequestLoanPage
+    public class RequestLoanPage : BasePage
     {
         private readonly IPage page;
 
@@ -13,7 +13,7 @@ namespace PlaywrightWorkshop.Examples.Pages
 
         public ILocator TextfieldLoanApplicationResult { get; init; }
 
-        public RequestLoanPage(IPage page)
+        public RequestLoanPage(IPage page) : base(page)
         {
             this.page = page;
             this.textfieldAmount = this.page.Locator("xpath=//input[@id='amount']");
@@ -22,6 +22,11 @@ namespace PlaywrightWorkshop.Examples.Pages
             this.buttonSubmitApplication = this.page.GetByRole(AriaRole.Button, new() { Name = "Apply Now" });
 
             this.TextfieldLoanApplicationResult = this.page.Locator("xpath=//td[@id='loanStatus']");
+        }
+
+        public async Task Open()
+        {
+            await base.SelectMenuItem("Request Loan");
         }
 
         public async Task SubmitLoanRequestFor(string amount, string downPayment, string fromAccountId)
