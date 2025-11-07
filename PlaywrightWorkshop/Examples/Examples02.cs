@@ -39,9 +39,8 @@ namespace PlaywrightWorkshop.Examples
             await loginPage.Open();
             await loginPage.LoginAs("john", "demo");
 
-            await new AccountsOverviewPage(Page).SelectMenuItem("Request Loan");
-
             var requestLoanPage = new RequestLoanPage(Page);
+            await requestLoanPage.Open();
             await requestLoanPage.SubmitLoanRequestFor("1000", "100", "12345");
 
             await Expect(requestLoanPage.TextfieldLoanApplicationResult).ToHaveTextAsync("Approved");

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Playwright;
+using PlaywrightWorkshop.Examples.Components;
 
 namespace PlaywrightWorkshop.Examples.Pages
 {
@@ -11,17 +12,26 @@ namespace PlaywrightWorkshop.Examples.Pages
         private readonly ILocator dropdownFromAccountId;
         private readonly ILocator buttonSubmitApplication;
 
+        private readonly MenuComponent menu;
+
         public ILocator TextfieldLoanApplicationResult { get; init; }
 
         public RequestLoanPage(IPage page)
         {
             this.page = page;
+            this.menu = new MenuComponent(this.page);
+
             this.textfieldAmount = this.page.Locator("xpath=//input[@id='amount']");
             this.textfieldDownPayment = this.page.Locator("xpath=//input[@id='downPayment']");
             this.dropdownFromAccountId = this.page.Locator("xpath=//select[@id='fromAccountId']");
             this.buttonSubmitApplication = this.page.GetByRole(AriaRole.Button, new() { Name = "Apply Now" });
 
             this.TextfieldLoanApplicationResult = this.page.Locator("xpath=//td[@id='loanStatus']");
+        }
+
+        public async Task Open()
+        {
+            await this.menu.SelectMenuItem("Request Loan");
         }
 
         public async Task SubmitLoanRequestFor(string amount, string downPayment, string fromAccountId)
