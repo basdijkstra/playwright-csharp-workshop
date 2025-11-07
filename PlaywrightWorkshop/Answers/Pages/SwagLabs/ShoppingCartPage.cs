@@ -1,6 +1,6 @@
 ﻿using Microsoft.Playwright;
 
-namespace PlaywrightWorkshop.Answers.Pages
+namespace PlaywrightWorkshop.Answers.Pages.SwagLabs
 {
     public class ShoppingCartPage
     {
@@ -10,7 +10,7 @@ namespace PlaywrightWorkshop.Answers.Pages
         public ShoppingCartPage(IPage page)
         {
             this.page = page;
-            this.CheckoutButton = this.page.GetByRole(AriaRole.Button, new() { Name = "Checkout" });
+            CheckoutButton = this.page.GetByRole(AriaRole.Button, new() { Name = "Checkout" });
         }
     }
 }

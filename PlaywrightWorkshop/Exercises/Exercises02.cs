@@ -1,5 +1,5 @@
 ﻿using Microsoft.Playwright.NUnit;
-using PlaywrightWorkshop.Exercises.Pages;
+using PlaywrightWorkshop.Exercises.Pages.SwagLabs;
 
 namespace PlaywrightWorkshop.Exercises
 {

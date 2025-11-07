@@ -1,6 +1,6 @@
 ﻿using Microsoft.Playwright;
 
-namespace PlaywrightWorkshop.Answers.Pages
+namespace PlaywrightWorkshop.Answers.Pages.SwagLabs
 {
     public class ProductDetailPage
     {
@@ -17,20 +17,20 @@ namespace PlaywrightWorkshop.Answers.Pages
 
             // Initialize the ILocator objects here. For the button navigating to the shopping
             //  cart, I recommend using "css=.shopping_cart_link" as the Locator.
-            this.buttonAddToCart = this.page.GetByRole(AriaRole.Button, new() { Name = "Add to cart" });
-            this.buttonGotoShoppingCart = this.page.Locator("css=.shopping_cart_link");
+            buttonAddToCart = this.page.GetByRole(AriaRole.Button, new() { Name = "Add to cart" });
+            buttonGotoShoppingCart = this.page.Locator("css=.shopping_cart_link");
         }
 
         // Add a method that clicks the button that adds the current item to the cart
         public async Task AddItemToCart()
         {
-            await this.buttonAddToCart.ClickAsync();
+            await buttonAddToCart.ClickAsync();
         }
 
         // Add a method that navigates to the shopping cart
         public async Task GotoShoppingCart()
         {
-            await this.buttonGotoShoppingCart.ClickAsync();
+            await buttonGotoShoppingCart.ClickAsync();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Playwright;
 
-namespace PlaywrightWorkshop.Exercises.Pages
+namespace PlaywrightWorkshop.Exercises.Pages.SwagLabs
 {
     public class ProductDetailPage
     {
