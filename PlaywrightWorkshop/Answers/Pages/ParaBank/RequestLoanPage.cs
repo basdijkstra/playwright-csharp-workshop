@@ -1,6 +1,6 @@
 ﻿using Microsoft.Playwright;
 
-namespace PlaywrightWorkshop.Examples.Pages
+namespace PlaywrightWorkshop.Answers.Pages.ParaBank
 {
     public class RequestLoanPage
     {
