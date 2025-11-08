@@ -1,12 +1,18 @@
 ﻿using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
-using PlaywrightWorkshop.Answers.Pages.ParaBank;
+using PlaywrightWorkshop.Exercises.Pages.ParaBank;
 
 namespace PlaywrightWorkshop.Exercises
 {
     [TestFixture]
     public class Exercises04 : PageTest
     {
+        [SetUp]
+        public void SetUp()
+        {
+            Page.SetDefaultTimeout(5000);
+        }
+
         [Test]
         public async Task LoanApplicationFor10000_WithDownPaymentOf1000_IsDenied()
         {

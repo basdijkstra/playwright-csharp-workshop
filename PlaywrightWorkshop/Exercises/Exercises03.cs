@@ -6,6 +6,12 @@ namespace PlaywrightWorkshop.Exercises
     [TestFixture]
     public class Exercises03 : PageTest
     {
+        [SetUp]
+        public void SetUp()
+        {
+            Page.SetDefaultTimeout(5000);
+        }
+
         [Test]
         public async Task LoanApplicationFor10000_WithDownPaymentOf1000_IsDenied()
         {
