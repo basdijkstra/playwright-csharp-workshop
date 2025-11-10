@@ -1,5 +1,6 @@
 ﻿using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
+using PlaywrightWorkshop.Answers.Models;
 using PlaywrightWorkshop.Answers.Pages.ParaBank;
 
 namespace PlaywrightWorkshop.Answers
@@ -43,8 +44,13 @@ namespace PlaywrightWorkshop.Answers
              *   * fromAccountId = fromAccountId
              * 
              * Check that the response status code is equal to HTTP 200
+             * 
              * Check that the value of the 'approved' field in the response body equals the value
              *   of the approved parameter
+             *   
+             * You can choose whether to do this by serializing the response into an object of
+             *   type LoanApplicationResponse (which is defined for you already), or by
+             *   deserializing it into an object of type JsonElement and using .Value.GetProperty()
              */
 
             var loanApplicationResponse = await apiContext.PostAsync("/parabank/services/bank/requestLoan", new()
@@ -59,6 +65,14 @@ namespace PlaywrightWorkshop.Answers
             });
 
             Assert.That(loanApplicationResponse.Status, Is.EqualTo(200));
+
+            // Using deserialization into a JsonElement
+            var bodyAsJsonElement = await loanApplicationResponse.JsonAsync();
+            Assert.That(bodyAsJsonElement.Value.GetProperty("approved").GetBoolean(), Is.EqualTo(approved));
+
+            // Using deserialization into a LoanApplicationResponse object
+            var bodyAsTypedObject = await loanApplicationResponse.JsonAsync<LoanApplicationResponse>();
+            Assert.That(bodyAsTypedObject.Approved, Is.EqualTo(approved));
         }
 
         [TearDown]
