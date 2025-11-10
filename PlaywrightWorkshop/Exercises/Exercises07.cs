@@ -1,11 +1,12 @@
 ﻿using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
 using PlaywrightWorkshop.Answers.Models;
+using PlaywrightWorkshop.Answers.Pages.ParaBank;
 
-namespace PlaywrightWorkshop.Answers
+namespace PlaywrightWorkshop.Exercises
 {
     [TestFixture]
-    public class Answers07 : PageTest
+    public class Exercises07 : PageTest
     {
         private IAPIRequestContext apiContext;
 
@@ -50,26 +51,16 @@ namespace PlaywrightWorkshop.Answers
              *   deserializing it into an object of type JsonElement and using .Value.GetProperty("approved").GetBoolean()
              */
 
-            var loanApplicationResponse = await apiContext.PostAsync("/parabank/services/bank/requestLoan", new()
-            {
-                Params = new Dictionary<string, object>
-                {
-                    { "customerId", 12212 },
-                    { "amount", amount },
-                    { "downPayment", downPayment },
-                    { "fromAccountId", fromAccountId }
-                }
-            });
+            var loginPage = new LoginPage(Page);
+            await loginPage.Open();
+            await loginPage.LoginAs("john", "demo");
 
-            Assert.That(loanApplicationResponse.Status, Is.EqualTo(200));
+            await new AccountsOverviewPage(Page).SelectMenuItem("Request Loan");
+                        
+            var requestLoanPage = new RequestLoanPage(Page);
+            await requestLoanPage.SubmitLoanRequestFor(amount, downPayment, fromAccountId);
 
-            // Using deserialization into a JsonElement
-            var bodyAsJsonElement = await loanApplicationResponse.JsonAsync();
-            Assert.That(bodyAsJsonElement.Value.GetProperty("approved").GetBoolean(), Is.EqualTo(approved));
-
-            // Using deserialization into a LoanApplicationResponse object
-            var bodyAsTypedObject = await loanApplicationResponse.JsonAsync<LoanApplicationResponse>();
-            Assert.That(bodyAsTypedObject.Approved, Is.EqualTo(approved));
+            await Expect(requestLoanPage.TextfieldLoanApplicationResult).ToHaveTextAsync(approved.ToString());
         }
 
         [TearDown]
