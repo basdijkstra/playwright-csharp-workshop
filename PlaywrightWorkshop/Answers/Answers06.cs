@@ -5,7 +5,7 @@ using PlaywrightWorkshop.Answers.Pages.ParaBank;
 namespace PlaywrightWorkshop.Answers
 {
     [TestFixture]
-    public class Exercises06 : PageTest
+    public class Answers06 : PageTest
     {
         private IAPIRequestContext apiContext;
 
