@@ -12,6 +12,7 @@ namespace PlaywrightWorkshop.Answers.Pages.ParaBank
         private readonly ILocator buttonSubmitApplication;
 
         public ILocator TextfieldLoanApplicationResult { get; init; }
+        public ILocator TextfieldLoanProvider {  get; init; }
 
         public RequestLoanPage(IPage page)
         {
@@ -22,6 +23,7 @@ namespace PlaywrightWorkshop.Answers.Pages.ParaBank
             this.buttonSubmitApplication = this.page.GetByRole(AriaRole.Button, new() { Name = "Apply Now" });
 
             this.TextfieldLoanApplicationResult = this.page.Locator("xpath=//td[@id='loanStatus']");
+            this.TextfieldLoanProvider = this.page.Locator("xpath=//td[@id='loanProviderName']");
         }
 
         public async Task SubmitLoanRequestFor(string amount, string downPayment, string fromAccountId)
