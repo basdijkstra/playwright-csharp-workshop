@@ -2,10 +2,10 @@
 using Microsoft.Playwright.NUnit;
 using PlaywrightWorkshop.Answers.Pages.ParaBank;
 
-namespace PlaywrightWorkshop.Answers
+namespace PlaywrightWorkshop.Exercises
 {
     [TestFixture]
-    public class Answers08 : PageTest
+    public class Exercises08 : PageTest
     {
         private IAPIRequestContext apiContext;
 
@@ -44,23 +44,6 @@ namespace PlaywrightWorkshop.Answers
              *   accountId = 14121
              */
 
-            await Page.RouteAsync("*/**/requestLoan?customerId=12212&amount=10000&downPayment=1000&fromAccountId=12345", async route =>
-            {
-                var mockResponse = new
-                {
-                    responseDate = 1758177294806,
-                    loanProviderName = "My mocked API response",
-                    approved = true,
-                    accountId = 14121
-                };
-
-                await route.FulfillAsync(new()
-                {
-                    Json = mockResponse
-                });
-
-            });
-
             var loginPage = new LoginPage(Page);
             await loginPage.Open();
             await loginPage.LoginAs("john", "demo");
@@ -77,8 +60,6 @@ namespace PlaywrightWorkshop.Answers
              *   make changes to that object yourself
              */
 
-            await Expect(requestLoanPage.TextfieldLoanApplicationResult).ToHaveTextAsync("Approved");
-            await Expect(requestLoanPage.TextfieldLoanProvider).ToHaveTextAsync("My mocked API response");
         }
 
         [TearDown]
