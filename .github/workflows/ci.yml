@@ -35,15 +35,6 @@ jobs:
 
       - name: List installed .NET SDKs
         run: dotnet --list-sdks
-       
-      - name: Working dir
-        run: pwd
-
-      - name: Contents
-        run: ls -al
-        
-      - name: Go up one folder and print contents
-        run: cd .. && ls -al
 
       - name: Restore project dependencies
         run: dotnet restore -p:TargetFramework=${{ matrix.framework }}
@@ -52,4 +43,4 @@ jobs:
         run: dotnet build --framework ${{ matrix.framework }} --no-restore
 
       - name: Run tests (${{ matrix.framework }})
-        run: dotnet test --framework ${{ matrix.framework }} --no-restore --no-build --verbosity normal --settings ./Settings/Playwright.runsettings --filter Name~Answers
+        run: dotnet test --framework ${{ matrix.framework }} --no-restore --no-build --verbosity normal --settings ./PlaywrightWorkshop/Settings/Playwright.runsettings --filter Name~Answers
