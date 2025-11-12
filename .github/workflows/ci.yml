@@ -41,6 +41,9 @@ jobs:
 
       - name: Build (${{ matrix.framework }})
         run: dotnet build --framework ${{ matrix.framework }} --no-restore
+        
+      - name: Install Playwright browsers
+        run: pwsh ./PlaywrightWorkshop/bin/Debug/net9.0/playwright.ps1 install
 
       - name: Run tests (${{ matrix.framework }})
         run: dotnet test --framework ${{ matrix.framework }} --no-restore --no-build --verbosity normal --settings ./PlaywrightWorkshop/Settings/Playwright.runsettings --filter Name~Answers
