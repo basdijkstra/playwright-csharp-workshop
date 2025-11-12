@@ -53,11 +53,5 @@ namespace PlaywrightWorkshop.Exercises
         /**
          * TODO: Add a [TearDown] method that properly disposes the IAPIRequestContext object
          */
-
-        [TearDown]
-        public async Task CleanUp()
-        {
-            await this.apiContext.DisposeAsync();
-        }
     }
 }

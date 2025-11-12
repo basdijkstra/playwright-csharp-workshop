@@ -47,6 +47,9 @@ namespace PlaywrightWorkshop.Exercises
              * 
              * Also add a property TextfieldLoanApplicationResult that exposes the loan application
              * result, and use it in the assertion here in the test method.
+             * 
+             * If you don't know how to do this, the ParaBank page objects in the Examples folder
+             * contain an example.
              */
             await Page.Locator("input[id=amount]").FillAsync("10000");
             await Page.Locator("input[id=downPayment]").FillAsync("1000");

@@ -47,6 +47,9 @@ namespace PlaywrightWorkshop.Answers
              * 
              * Also add a property TextfieldLoanApplicationResult that exposes the loan application
              * result, and use it in the assertion here in the test method.
+             * 
+             * If you don't know how to do this, the ParaBank page objects in the Examples folder
+             * contain an example.
              */
             var requestLoanPage = new RequestLoanPage(Page);
             await requestLoanPage.SubmitLoanRequestFor("10000", "1000", "12345");

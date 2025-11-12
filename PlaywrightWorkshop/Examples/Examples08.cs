@@ -10,6 +10,14 @@ namespace PlaywrightWorkshop.Examples
         public async Task SetUp()
         {
             Page.SetDefaultTimeout(5000);
+
+            await Context.Tracing.StartAsync(new()
+            {
+                Title = $"{TestContext.CurrentContext.Test.ClassName}.{TestContext.CurrentContext.Test.Name}",
+                Screenshots = true,
+                Snapshots = true,
+                Sources = true
+            });
         }
 
         [Test]
@@ -38,6 +46,19 @@ namespace PlaywrightWorkshop.Examples
 
             // Assert that the Strawberry fruit is visible
             await Expect(Page.GetByText("Some weird kind of fruit")).ToBeVisibleAsync();
+        }
+
+        [TearDown]
+        public async Task TearDown()
+        {
+            await Context.Tracing.StopAsync(new()
+            {
+                Path = Path.Combine(
+                    TestContext.CurrentContext.WorkDirectory,
+                    "playwright-traces",
+                    $"{TestContext.CurrentContext.Test.ClassName}.{TestContext.CurrentContext.Test.Name}.zip"
+                )
+            });
         }
     }
 }

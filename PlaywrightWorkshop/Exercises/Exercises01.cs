@@ -20,7 +20,7 @@ namespace PlaywrightWorkshop.Exercises
             // Login by:
             // Typing 'standard_user' into the text field with placeholder 'Username'. Use the GetByPlaceholder() locator.
             // Typing 'secret_sauce' into the text field with placeholder 'Password'.
-            // Clicking the button with name 'Login'. See the example for an idea on how 
+            // Clicking the button with name 'Login'. See the example for an idea on how to do this.
 
             // Check that the element with text 'Products' is visible
             // See https://playwright.dev/dotnet/docs/locators#locate-by-text for a hint.

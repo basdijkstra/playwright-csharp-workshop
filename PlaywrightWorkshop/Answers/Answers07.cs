@@ -39,6 +39,8 @@ namespace PlaywrightWorkshop.Answers
              *   * amount = amount
              *   * downPayment = downPayment
              *   * fromAccountId = fromAccountId
+             *   
+             * I haven't shown you how to add query parameters to a request. Can you find out for yourself?
              * 
              * Check that the response status code is equal to HTTP 200
              * 
@@ -48,6 +50,8 @@ namespace PlaywrightWorkshop.Answers
              * You can choose whether to do this by serializing the response into an object of
              *   type LoanApplicationResponse (which is defined for you already), or by
              *   deserializing it into an object of type JsonElement and using .Value.GetProperty("approved").GetBoolean()
+             *   
+             * If you have some time left, see if you can do both!
              */
 
             var loanApplicationResponse = await apiContext.PostAsync("/parabank/services/bank/requestLoan", new()

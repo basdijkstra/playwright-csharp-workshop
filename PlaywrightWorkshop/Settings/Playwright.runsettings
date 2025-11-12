@@ -2,7 +2,7 @@
 <RunSettings>
 	<!-- Playwright -->
 	<Playwright>
-		<BrowserName>chrome</BrowserName>
+		<BrowserName>chromium</BrowserName>
 		<ExpectTimeout>5000</ExpectTimeout>
 		<LaunchOptions>
 			<Headless>true</Headless>
