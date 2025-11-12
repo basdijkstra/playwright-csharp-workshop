@@ -35,6 +35,9 @@ jobs:
 
       - name: List installed .NET SDKs
         run: dotnet --list-sdks
+       
+      - name: Working dir
+        run: pwd
 
       - name: Restore project dependencies
         run: dotnet restore -p:TargetFramework=${{ matrix.framework }}
