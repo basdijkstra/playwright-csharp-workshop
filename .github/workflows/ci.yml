@@ -39,6 +39,12 @@ jobs:
       - name: Working dir
         run: pwd
 
+      - name: Contents
+        run: ls -al
+        
+      - name: Go up one folder and print contents
+        run: cd .. && ls -al
+
       - name: Restore project dependencies
         run: dotnet restore -p:TargetFramework=${{ matrix.framework }}
 
