@@ -43,4 +43,4 @@ jobs:
         run: dotnet build --framework ${{ matrix.framework }} --no-restore
 
       - name: Run tests (${{ matrix.framework }})
-        run: dotnet test --framework ${{ matrix.framework }} --no-restore --no-build --verbosity normal --settings Settings/Playwright.runsettings --filter Name~Answers
+        run: dotnet test --framework ${{ matrix.framework }} --no-restore --no-build --verbosity normal --settings ./Settings/Playwright.runsettings --filter Name~Answers
