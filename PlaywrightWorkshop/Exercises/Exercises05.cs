@@ -5,7 +5,7 @@ using PlaywrightWorkshop.Answers.Pages.ParaBank;
 namespace PlaywrightWorkshop.Exercises
 {
     [TestFixture]
-    public class Answers05 : PageTest
+    public class Exercises05 : PageTest
     {
         [SetUp]
         public void SetUp()
@@ -41,7 +41,7 @@ namespace PlaywrightWorkshop.Exercises
         }
 
         [Test]
-        public async Task LoanApplicationFor1000_WithDownPaymentOf500_IsDenied()
+        public async Task LoanApplicationFor1000_WithDownPaymentOf500_IsApproved()
         {
             await Page.GotoAsync("https://parabank.parasoft.com");
 

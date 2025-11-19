@@ -60,7 +60,7 @@ namespace PlaywrightWorkshop.Exercises
         }
 
         [Test]
-        public async Task LoanApplicationFor1000_WithDownPaymentOf500_IsDenied()
+        public async Task LoanApplicationFor1000_WithDownPaymentOf500_IsApproved()
         {
             /**
              * TODO: Apply the changes to this test, too
